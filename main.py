@@ -328,6 +328,18 @@ def transcribe():
     print("TRANSCRIPTION COMPLETED")
     print("------------")
     print()
+    print(
+    """
+    NOTE:
+    If you transcribed resaerch data, MAKE SURE TO DELETE THE WHISPER MODEL before turning the internet back on.
+    You can find the model(s) you downloaded in the 'model' folder in the 'EasyWhisper' folder.
+    Please delete these models before connecting your computer to the internet again.
+    
+    You can find the transcript(s) in the 'transcripts' folder.
+    
+    You can now close the terminal.
+    """
+    )
             
 def diarize():
     audio_file_list = get_audio_files(folder_path=Path("input"))
@@ -349,12 +361,26 @@ def diarize():
     transcript_diary_integration(transcription_files=transcription_files)
 
     delete_folder_contents(folder_path="converted")
+    
+    delete_folder_contents(folder_path="diarizations")
 
     print()
     print("------------")
     print("TRANSCRIPTION COMPLETED")
     print("------------")
     print()
+    print(
+    """
+    NOTE:
+    If you transcribed resaerch data, MAKE SURE TO DELETE THE WHISPER MODEL before turning the internet back on.
+    You can find the model(s) you downloaded in the 'model' folder in the 'EasyWhisper' folder.
+    Please delete these models before connecting your computer to the internet again.
+
+    You can find the transcript(s) in the 'transcripts' folder.
+
+    You can now close the terminal.
+    """
+    )
 
 
 
