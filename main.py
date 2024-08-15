@@ -44,8 +44,8 @@ def get_model_size():
     
     model_sizes = ["tiny", "base", "small", "medium", "large"]
 
+    print()
     print("Please enter the number of the model that you would like to use:")
-    
     print()
     
     for idx, size in enumerate(model_sizes):
@@ -138,6 +138,34 @@ def convert_audio(audio_file_list):
         print()
 
 def transcribe_audio(model_size, transcription_files):
+    
+    print()
+    print("------------")
+    print("Loading Model:")
+    print()
+    
+    model = whisper.load_model(model_size, download_root="models")
+    
+    for file in transcription_files:
+        file_name = extract_audio_filename(path=str(file))
+        
+        print()
+        print("------------")
+        print(f"Transcribing: {file_name}...")
+        print()
+        
+        result = model.transcribe(str(file), verbose=True)
+        
+        with open(f"transcripts/Transcript_{file_name}.txt", "w") as f:
+            f.write(result['text'])
+            f.close()
+        
+        print()
+        print(f"{file_name} transcribed!")
+        print("------------")
+        print()
+    
+def transcribe_diarize_audio(model_size, transcription_files):
     
     print()
     print("------------")
@@ -276,8 +304,33 @@ def delete_folder_contents(folder_path):
                 shutil.rmtree(file_path)
         except Exception as e:
             print(f"Failed to delete {file_path}. Reason: {e}")
-            
+           
 def transcribe():
+    # Getting Model Size
+    model_size = get_model_size()    
+    
+    check_model(model_size=model_size)
+    # Getting Audiofile List
+    audio_file_list = get_audio_files(folder_path=Path("input"))
+
+    # Converting each audio file to wav so that whisper can transcribe them
+    convert_audio(audio_file_list)
+
+    # Getting list of converted files for transcription
+    
+    transcription_files = get_audio_files(folder_path=Path("converted"))
+
+    transcribe_audio(model_size=model_size, transcription_files=transcription_files)
+
+    delete_folder_contents(folder_path="converted")
+    
+    print()
+    print("------------")
+    print("TRANSCRIPTION COMPLETED")
+    print("------------")
+    print()
+            
+def diarize():
     audio_file_list = get_audio_files(folder_path=Path("input"))
     
     transcription_settings = get_transcritpion_settings(audio_file_list=audio_file_list)
@@ -290,7 +343,7 @@ def transcribe():
 
     transcription_files = get_audio_files(folder_path=Path("converted"))
 
-    transcribe_audio(model_size=model_size, transcription_files=transcription_files)
+    transcribe_diarize_audio(model_size=model_size, transcription_files=transcription_files)
 
     get_speaker_diarization(transcription_files=transcription_files, transcription_settings=transcription_settings)
 
@@ -298,8 +351,11 @@ def transcribe():
 
     delete_folder_contents(folder_path="converted")
 
-
-transcribe()
+    print()
+    print("------------")
+    print("TRANSCRIPTION COMPLETED")
+    print("------------")
+    print()
 
 
 

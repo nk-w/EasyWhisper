@@ -2,3 +2,7 @@
 /pytorch_model.bin
 /pytorch_model_embedding.bin
 /models/*
+/transcripts/*
+/input/*
+/converted/*
+/diarizations/*
