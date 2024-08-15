@@ -4,6 +4,5 @@
 /models/*
 /transcripts/*
 /input/*
-/converted/*
 /diarizations/*
 /EasyWhisper.code-workspace
