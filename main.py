@@ -4,7 +4,6 @@ import os
 import whisper
 from pyannote.audio import Pipeline
 import shutil
-import sys
 import json
 
 # Defining Functions
