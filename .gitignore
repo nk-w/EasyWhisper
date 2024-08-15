@@ -5,4 +5,5 @@
 /transcripts/*
 /input/*
 /diarizations/*
+/converted/*
 /EasyWhisper.code-workspace
