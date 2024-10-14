@@ -183,6 +183,10 @@ def transcribe_diarize_audio(model_size, transcription_files):
         
         result = model.transcribe(str(file), verbose=True, word_timestamps=True)
         
+        with open(f"transcripts/Transcript_{file_name}.txt", "w") as f:
+            f.write(result['text'])
+            f.close()
+
         json_object = json.dumps(result, indent = 4)
         with open(f"diarizations/Words_{file_name}.json", "w") as f:
             f.write(json_object)

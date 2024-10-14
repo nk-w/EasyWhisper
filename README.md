@@ -32,7 +32,7 @@ or
     SPEAKER 2: This is what speaker 2 said.
     ```
 
-This latter option is achieved by using [pyannote-audio](https://github.com/pyannote/pyannote-audio). 
+This latter option is achieved by using [pyannote-audio](https://github.com/pyannote/pyannote-audio) and only works for interviews in English. The first option supports all languages that are supported by the [official Whisper Models of OpenAI](https://github.com/openai/whisper)
 
 ## How to Use
 See [a detailed tutorial for all the steps from installing Python to running the code here](https://niklaswenzel.notion.site/Installing-Using-WHISPER-for-Transcription-of-Interviews-e20049cf9ebe4fea92f5b8112cb7b35c?pvs=4)
