@@ -5,7 +5,9 @@
 /transcripts/*
 /input/*
 /diarizations/*
+!/diarizations/.gitkeep
 /converted/*
+!/converted/.gitkeep
 /EasyWhisper.code-workspace
 __pycache__/
 *.pyc
