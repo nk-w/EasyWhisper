@@ -2,7 +2,9 @@
 /pytorch_model.bin
 /pytorch_model_embedding.bin
 /models/*
+!/models/.gitkeep
 /transcripts/*
+!/transcripts/.gitkeep
 /input/*
 /diarizations/*
 !/diarizations/.gitkeep
